@@ -13,6 +13,7 @@
     "@uiw/react-md-editor": "^4.1.2",
     "@vercel/blob": "^2.8.0",
     "drizzle-orm": "^0.45.3",
+    "lucide-react": "^1.61.0",
     "next": "16.3.8",
     "react": "19.2.8",
     "react-dom": "19.2.8",
