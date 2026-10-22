@@ -27,12 +27,12 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
     >
       {/* Top Meta */}
       <div className="flex items-center justify-between gap-2 mb-3 shrink-0">
-        <div className="flex items-center gap-2 text-xs text-zinc-500 font-medium min-w-0">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-zinc-500 font-medium min-w-0">
           <span className="font-mono text-xs font-bold text-zinc-900 tracking-wider">
             #{String(article.rank).padStart(2, '0')}
           </span>
           <span>·</span>
-          <span className="uppercase tracking-wider text-[11px] font-semibold text-zinc-700 truncate">
+          <span className="uppercase tracking-wider text-[11px] font-semibold text-zinc-700 whitespace-nowrap">
             {article.category}
           </span>
           <span>·</span>
@@ -74,7 +74,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           <h2
             className={`font-serif font-bold tracking-tight text-zinc-900 group-hover:text-zinc-700 leading-snug ${
               isLead
-                ? 'text-2xl sm:text-3xl lg:text-4xl mb-2.5'
+                ? 'text-2xl sm:text-3xl mb-2.5'
                 : isWide
                 ? 'text-xl sm:text-2xl mb-1'
                 : 'text-lg sm:text-xl mb-1'
