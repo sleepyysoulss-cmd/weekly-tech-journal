@@ -14,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenArchive
 }) => {
   return (
-    <header className="border-b border-stone-200 bg-[#faf9f6]/95 backdrop-blur-md sticky top-0 z-30 transition-all">
+    <header className="border-b border-stone-200 bg-[#faf9f6]/95 backdrop-blur-md relative z-30 transition-all">
       <div className="border-b border-stone-200/60 py-2 px-4 sm:px-8 text-[11px] uppercase tracking-wider text-stone-500 font-medium flex items-center justify-between">
         <div className="flex items-center gap-3">
           <span>{currentEdition.dateRange}</span>
@@ -32,7 +32,7 @@ export const Header: React.FC<HeaderProps> = ({
             <BookOpen className="w-4 h-4 text-stone-700" />
             <span>Weekly Tech Journal</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-stone-900 font-editorial-display leading-none">
+          <h1 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 font-editorial-display leading-none">
             THE WEEK IN TECH <span className="text-stone-400 font-normal">{currentEdition.issueCode}</span>
           </h1>
           <p className="mt-1.5 text-stone-600 text-sm sm:text-base font-editorial-serif italic">
