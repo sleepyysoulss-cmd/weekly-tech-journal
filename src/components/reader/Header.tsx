@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-5 sm:py-7 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div className="max-w-4xl mx-auto px-4 sm:px-8 py-5 sm:py-7 flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1 text-stone-500 text-xs font-semibold tracking-widest uppercase">
             <BookOpen className="w-4 h-4 text-stone-700" />

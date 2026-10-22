@@ -50,10 +50,10 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         <div
           className={`relative overflow-hidden rounded-lg bg-zinc-100 shrink-0 ${
             isLead
-              ? 'w-full h-72 sm:h-96 lg:h-[400px]'
+              ? 'w-full h-56 sm:h-64'
               : isWide
               ? 'w-full md:w-5/12 h-44 mb-2 md:mb-0'
-              : 'w-full h-36 mb-1'
+              : 'w-full h-28 mb-1'
           }`}
         >
           <img

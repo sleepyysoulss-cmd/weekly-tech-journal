@@ -30,65 +30,28 @@ export const BentoGrid: React.FC<BentoGridProps> = ({
           </h2>
         </div>
         <span className="text-xs text-zinc-500 italic">
-          Click any card to slide out full report
+          Click any card to read the full story
         </span>
       </div>
 
-      {/* Bento Grid based on PDF Page 4 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 auto-rows-fr">
-        {/* BIG STORY #1: lg:col-span-2 lg:row-span-2 */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 auto-rows-fr">
         {story1 && (
-          <div className="md:col-span-2 lg:col-span-2 lg:row-span-2 flex">
-            <ArticleCard
-              article={story1}
-              onClick={onSelectArticle}
-              layoutVariant="lead"
-            />
+          <div className="sm:col-span-2 flex">
+            <ArticleCard article={story1} onClick={onSelectArticle} layoutVariant="lead" />
           </div>
         )}
-
-        {/* STORY #2: lg:col-span-1 lg:row-span-1 */}
         {story2 && (
-          <div className="md:col-span-1 lg:col-span-1 lg:row-span-1 flex">
-            <ArticleCard
-              article={story2}
-              onClick={onSelectArticle}
-              layoutVariant="compact"
-            />
+          <div className="flex">
+            <ArticleCard article={story2} onClick={onSelectArticle} layoutVariant="compact" />
           </div>
         )}
-
-        {/* STORY #3: lg:col-span-1 lg:row-span-1 */}
-        {story3 && (
-          <div className="md:col-span-1 lg:col-span-1 lg:row-span-1 flex">
-            <ArticleCard
-              article={story3}
-              onClick={onSelectArticle}
-              layoutVariant="compact"
-            />
-          </div>
-        )}
-
-        {/* STORY #4: md:col-span-1 lg:col-span-2 lg:row-span-1 */}
-        {story4 && (
-          <div className="md:col-span-1 lg:col-span-2 lg:row-span-1 flex">
-            <ArticleCard
-              article={story4}
-              onClick={onSelectArticle}
-              layoutVariant="wide"
-            />
-          </div>
-        )}
-
-        {/* STORY #5: md:col-span-2 lg:col-span-1 lg:row-span-1 */}
-        {story5 && (
-          <div className="md:col-span-2 lg:col-span-1 lg:row-span-1 flex">
-            <ArticleCard
-              article={story5}
-              onClick={onSelectArticle}
-              layoutVariant="compact"
-            />
-          </div>
+        {[story3, story4, story5].map(
+          (s) =>
+            s && (
+              <div key={s.id} className="flex">
+                <ArticleCard article={s} onClick={onSelectArticle} layoutVariant="compact" />
+              </div>
+            )
         )}
       </div>
     </section>
