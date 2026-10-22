@@ -1,33 +1,28 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { EDITIONS } from '@/data/mockEditions';
 import { Article, Edition } from '@/types/journal';
 import { Header } from '@/components/reader/Header';
 import { BentoGrid } from '@/components/reader/BentoGrid';
-import { ArticleSlidePanel } from '@/components/reader/ArticleSlidePanel';
 import { WeeklySummary } from '@/components/reader/WeeklySummary';
 import { EditorsNote } from '@/components/reader/EditorsNote';
 import { WeeklyArchive } from '@/components/reader/WeeklyArchive';
 import { Calendar, Layers, Sparkles } from 'lucide-react';
 
 export default function ReaderPage() {
+  const router = useRouter();
   const [currentEdition, setCurrentEdition] = useState<Edition>(EDITIONS[0]);
-  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [isArchiveOpen, setIsArchiveOpen] = useState(false);
 
   const handleSelectArticle = (article: Article) => {
-    setSelectedArticle(article);
-  };
+  router.push(`/articles/${article.id}`);
+};
 
-  const handleCloseArticle = () => {
-    setSelectedArticle(null);
-  };
-
-  const handleSelectEdition = (edition: Edition) => {
-    setCurrentEdition(edition);
-    setSelectedArticle(null);
-  };
+const handleSelectEdition = (edition: Edition) => {
+  setCurrentEdition(edition);
+};
 
   return (
     <div className="min-h-screen bg-[#faf9f6] text-stone-900 flex flex-col selection:bg-stone-900 selection:text-white">
@@ -118,14 +113,8 @@ export default function ReaderPage() {
         </div>
       </footer>
 
-      {/* 2. Slide-Out Article / Side Panel */}
-      <ArticleSlidePanel
-        article={selectedArticle}
-        isOpen={Boolean(selectedArticle)}
-        onClose={handleCloseArticle}
-        onSelectArticle={handleSelectArticle}
-        allArticles={currentEdition.stories}
-      />
+      
+      
 
       {/* 6. Weekly Archive Drawer */}
       <WeeklyArchive
