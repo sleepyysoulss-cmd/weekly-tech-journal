@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
+/* Class-based dark mode: <html class="dark"> (set by ThemeToggle / the inline script in layout.tsx) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf9f6;
+  --foreground: #1c1917;
+  --paper: #faf9f6; /* page background */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-paper: var(--paper);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*
+  Dark theme.
+  The app is styled with Tailwind's stone/zinc scales plus white. Instead of
+  sprinkling dark: variants on every element, the scales are remapped here
+  (light -> dark), so `bg-white` becomes the card surface, `text-stone-900`
+  becomes near-white text, `border-stone-200` becomes a subtle dark border, etc.
+  A `bg-stone-900 text-white` button therefore inverts to a light button with
+  dark text, which is the usual dark-mode treatment.
+*/
+.dark {
+  color-scheme: dark;
+
+  --background: #0c0a09;
+  --foreground: #f5f5f4;
+  --paper: #0c0a09;
+
+  --color-white: #1c1917; /* card / panel surface (and dark text on inverted buttons) */
+
+  --color-stone-50: #24201e;
+  --color-stone-100: #292524;
+  --color-stone-200: #332f2c;
+  --color-stone-300: #44403c;
+  --color-stone-400: #8a837d;
+  --color-stone-500: #a8a29e;
+  --color-stone-600: #c4bfba;
+  --color-stone-700: #d6d3d1;
+  --color-stone-800: #e7e5e4;
+  --color-stone-900: #f5f5f4;
+  --color-stone-950: #fafaf9;
+
+  --color-zinc-50: #24201e;
+  --color-zinc-100: #292524;
+  --color-zinc-200: #332f2c;
+  --color-zinc-300: #44403c;
+  --color-zinc-400: #8a837d;
+  --color-zinc-500: #a8a29e;
+  --color-zinc-600: #c4bfba;
+  --color-zinc-700: #d6d3d1;
+  --color-zinc-800: #e7e5e4;
+  --color-zinc-900: #f5f5f4;
+  --color-zinc-950: #fafaf9;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Smooth theme switch for surfaces and text (kept off images/transforms) */
+html.theme-ready body,
+html.theme-ready article,
+html.theme-ready header,
+html.theme-ready section {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }

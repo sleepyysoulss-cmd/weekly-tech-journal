@@ -25,7 +25,7 @@ const handleSelectEdition = (edition: Edition) => {
 };
 
   return (
-    <div className="min-h-screen bg-[#faf9f6] text-stone-900 flex flex-col selection:bg-stone-900 selection:text-white">
+    <div className="min-h-screen bg-paper text-stone-900 flex flex-col selection:bg-stone-900 selection:text-white">
       {/* Editorial Header */}
       <Header
         currentEdition={currentEdition}

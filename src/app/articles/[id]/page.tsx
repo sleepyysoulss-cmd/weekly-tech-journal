@@ -2,6 +2,7 @@
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { useState } from 'react';
 import {
   ArrowLeft,
@@ -24,7 +25,7 @@ export default function ArticlePage() {
 
   if (!article) {
     return (
-      <main className="min-h-screen bg-[#faf9f6] px-6 py-24 text-center">
+      <main className="min-h-screen bg-paper px-6 py-24 text-center">
         <h1 className="font-serif text-3xl font-bold text-zinc-900">
           Article not found
         </h1>
@@ -64,28 +65,31 @@ export default function ArticlePage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#faf9f6] text-zinc-900">
+    <main className="min-h-screen bg-paper text-zinc-900">
       <header className="border-b border-zinc-200 bg-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4 sm:px-8">
           <button
             onClick={() => router.push('/')}
-            className="flex items-center gap-2 text-sm font-medium text-zinc-700 hover:text-black"
+            className="flex items-center gap-2 text-sm font-medium text-zinc-700 hover:text-zinc-900"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to journal
           </button>
 
-          <button
-            onClick={handleShare}
-            className="flex items-center gap-2 rounded-full border border-zinc-200 px-4 py-2 text-sm hover:bg-zinc-50"
-          >
-            {copied ? (
-              <Check className="h-4 w-4" />
-            ) : (
-              <Share2 className="h-4 w-4" />
-            )}
-            {copied ? 'Link copied!' : 'Share article'}
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={handleShare}
+              className="flex items-center gap-2 rounded-full border border-zinc-200 px-4 py-2 text-sm hover:bg-zinc-50"
+            >
+              {copied ? (
+                <Check className="h-4 w-4" />
+              ) : (
+                <Share2 className="h-4 w-4" />
+              )}
+              {copied ? 'Link copied!' : 'Share article'}
+            </button>
+          </div>
         </div>
       </header>
 

@@ -20,6 +20,19 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Editor access (`/editor`)
+
+The editor page is protected by a passcode that is checked on the server. Set it in `.env.local` (local) or in your hosting provider's environment variables (e.g. Vercel → Settings → Environment Variables):
+
+```bash
+EDITOR_PASSCODE=choose-a-long-random-passcode
+```
+
+- Visitors without the passcode only see the unlock screen.
+- If `EDITOR_PASSCODE` is not set, the editor stays locked.
+- A successful unlock lasts 8 hours (httpOnly cookie). Changing the passcode signs everyone out.
+- The `/api/entries` write routes are separate and use `API_WRITE_TOKEN`.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
