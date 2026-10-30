@@ -7,7 +7,7 @@ import { LogOut, Plus, X } from 'lucide-react';
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
 import { ThemeToggle, useTheme } from '@/components/ThemeToggle';
-import { logout } from './actions';
+import { createEntry, logout } from './actions';
 
 const MDEditor = dynamic(
   () => import('@uiw/react-md-editor').then((mod) => mod.default),
@@ -123,7 +123,7 @@ export function EditorForm() {
     );
 
   /* ---------- submit ---------- */
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus(null);
 
@@ -165,12 +165,9 @@ export function EditorForm() {
       })),
       images: images.map(({ file }) => file.name),
     };
-
-    console.log('Submitting data:', payload);
-    setStatus({
-      kind: 'ok',
-      message: 'Article validated. Saving to the database is not connected yet, so nothing was stored.',
-    });
+    const result = await createEntry(payload.title, payload.content);
+    setStatus({ kind: result.ok ? 'ok' : 'error', message: result.message });
+    
   };
 
   return (
